@@ -23,7 +23,9 @@ class Sum:
         self.addend = addend
 
     def reduce(self, bank, to):
-        return Currency(self.addend.amount + self.augend.amount, to)
+        augend = self.augend.reduce(bank, to).amount
+        addend = self.addend.reduce(bank, to).amount
+        return Currency(augend + addend, to)
 
 
 class Bank:

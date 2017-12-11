@@ -46,9 +46,6 @@ def test_reduce_different_currencies():
     bank = Bank()
     bank.addRate("EUR", "USD", 2)
     result = bank.reduce(Currency(2, "EUR"), "USD")
-    print ("+++++++++")
-    print (result.currency)
-    print ("+++++++++")
     assert result == Currency(1, "USD")
 
 def test_same_currency_rates():
@@ -58,4 +55,6 @@ def test_mixed_addition():
     five_dollars = Currency(5, "USD")
     ten_euro = Currency(10, "EUR")
     bank = Bank()
-    bank.addRate
+    bank.addRate("EUR", "USD", 2)
+    result = bank.reduce(five_dollars.plus(ten_euro), "USD")
+    assert result == Currency(10, "USD")
